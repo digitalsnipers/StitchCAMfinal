@@ -10,16 +10,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-
-
-
-import com.bumptech.glide.Glide;
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.DraweeView;
 import com.facebook.drawee.view.SimpleDraweeView;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,6 +24,11 @@ public class MainCamActivity extends AppCompatActivity {
     FrameLayout frameLayout;
     DisplayCamera displayCamera;
     ImageButton shutterBtn;
+    ImageButton okBtn;
+    ImageButton cancelBtn;
+    RelativeLayout imagePreview;
+    ImageView imageStatus;
+    int i=0;
     //initialising Fresco
     //Fresco.initialize(this);
 
@@ -42,6 +41,10 @@ public class MainCamActivity extends AppCompatActivity {
         createOutputFolder();
 
         frameLayout = (FrameLayout)findViewById(R.id.frameLayout);
+        imagePreview= (RelativeLayout)findViewById(R.id.previewLayout);
+        imagePreview.setVisibility(View.GONE);
+        imageStatus= (ImageView)findViewById(R.id.imageStatus);
+        imageStatus.setVisibility(View.GONE);
 
 
         //open the camera
@@ -141,25 +144,65 @@ public class MainCamActivity extends AppCompatActivity {
 
     private String fileName;
     private File getOutputMediaFile() throws IOException {
-
-        File imageFile = new File(outputFolder,"primary.jpg");
+        String no=Integer.toString(i);
+        File imageFile = new File(outputFolder,no+".jpg");
         fileName = imageFile.getAbsolutePath();
         return  imageFile;
     }
 
     ImageView imageView;
     private void dispImg() {
-        //imageView.setVisibility(View.VISIBLE);
+
+        imagePreview.setVisibility(View.VISIBLE);
         if (fileName != null) {
             Uri imageUri = Uri.parse(fileName);
             DraweeView draweeView = (DraweeView) findViewById(R.id.sdvImage);
             draweeView.setImageURI(imageUri);
+
+            //OK Button
+            okBtn = (ImageButton) findViewById(R.id.okButton);
+            okBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    i++;
+                    imagePreview.setVisibility(View.GONE);
+                    loadGui();
+                }
+
+            });
+            loadGui();
+
+            //cancel Button
+            cancelBtn = (ImageButton) findViewById(R.id.cancelButton);
+            cancelBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    imagePreview.setVisibility(View.GONE);
+                    loadGui();
+                }
+            });
         } else {
             Toast.makeText(getApplicationContext(), fileName +"not exist", Toast.LENGTH_SHORT).show();
         }
     }
 
+    private void loadGui(){
 
+        //image status icon
+        switch(i){
+
+            case 1:{imageStatus.setVisibility(View.VISIBLE);
+                imageStatus.setImageResource(R.mipmap.ic_sts14);
+                break;}
+            case 2:{imageStatus.setImageResource(R.mipmap.ic_sts24);
+                break;}
+            case 3:{imageStatus.setImageResource(R.mipmap.ic_sts34);
+                break;}
+            case 4:{imageStatus.setImageResource(R.mipmap.ic_sts44);
+                break;}
+            default:break;
+        }
+    }
 
 
 }
