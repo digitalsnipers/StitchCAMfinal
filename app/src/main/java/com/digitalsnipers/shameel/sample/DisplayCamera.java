@@ -45,10 +45,11 @@ public class DisplayCamera extends SurfaceView implements SurfaceHolder.Callback
         List<Camera.Size> sizes = params.getSupportedPictureSizes();
         Camera.Size mSize = null;
 
-        for(Camera.Size size : sizes)
+        /*for(Camera.Size size : sizes)
         {
             mSize=size;
-        }
+        }*/
+        mSize= sizes.get(sizes.size()-2);
 
         //change the orientation
 
