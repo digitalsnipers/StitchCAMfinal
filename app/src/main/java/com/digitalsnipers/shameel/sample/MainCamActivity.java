@@ -44,7 +44,7 @@ public class MainCamActivity extends AppCompatActivity {
         imagePreview= (RelativeLayout)findViewById(R.id.previewLayout);
         imagePreview.setVisibility(View.GONE);
         imageStatus= (ImageView)findViewById(R.id.imageStatus);
-        imageStatus.setVisibility(View.GONE);
+        imageStatus.setVisibility(View.GONE );
 
 
         //open the camera
@@ -57,13 +57,11 @@ public class MainCamActivity extends AppCompatActivity {
         shutterBtn = (ImageButton) findViewById(R.id.shutterButton);
         shutterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(camera!=null) {
+            public void onClick(View v)
+            {
+                if(camera!=null)
+                {
                     camera.takePicture(null, null, mPictureCallback);
-
-                    //camera.stopPreview();
-
-                    //dispImg();
 
                 }
             }

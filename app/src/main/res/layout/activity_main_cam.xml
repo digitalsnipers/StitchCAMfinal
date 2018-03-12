@@ -30,56 +30,67 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="22dp"
+            android:background="?android:attr/selectableItemBackground"
             fresco:srcCompat="@mipmap/ic_shutter"
             tools:layout_editor_absoluteX="504dp"
             tools:layout_editor_absoluteY="100dp" />
+
+        <RelativeLayout
+            android:id="@+id/previewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.facebook.drawee.view.DraweeView
+                android:id="@+id/sdvImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:screenOrientation="landscape" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/okButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginTop="13dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    fresco:srcCompat="@mipmap/ic_ok" />
+
+                <ImageButton
+                    android:id="@+id/cancelButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    fresco:srcCompat="@mipmap/ic_cancel" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/previewLayout">
+        android:layout_height="match_parent">
 
-        <com.facebook.drawee.view.DraweeView
-            android:id="@+id/sdvImage"
+        <ImageView
+            android:id="@+id/imageStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:screenOrientation="landscape" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/cancelButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="16dp"
-                fresco:srcCompat="@mipmap/ic_cancel" />
-
-            <ImageButton
-                android:id="@+id/okButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="18dp"
-                android:layout_marginTop="13dp"
-                fresco:srcCompat="@mipmap/ic_ok" />
-        </RelativeLayout>
+            android:layout_below="@+id/frameLayout"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="19dp"
+            android:layout_toEndOf="@+id/frameLayout"
+            fresco:srcCompat="@mipmap/ic_sts14" />
 
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/imageStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/frameLayout"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="19dp"
-        android:layout_toEndOf="@+id/frameLayout"
-        fresco:srcCompat="@mipmap/ic_sts14" />
 
 </RelativeLayout>
