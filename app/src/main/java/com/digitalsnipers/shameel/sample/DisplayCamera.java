@@ -15,7 +15,8 @@ import java.util.List;
 
 public class DisplayCamera extends SurfaceView implements SurfaceHolder.Callback {
 
-        Camera camera;
+    int h,w;
+    Camera camera;
     SurfaceHolder holder;
     public DisplayCamera(Context context,Camera camera) {
         super(context);
@@ -68,6 +69,8 @@ public class DisplayCamera extends SurfaceView implements SurfaceHolder.Callback
 
         //chosing resolution
         params.setPictureSize(mSize.width,mSize.height);
+        h=mSize.height;
+        w=mSize.width;
 
         //enabling continues autofocusing
         params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
@@ -83,6 +86,15 @@ public class DisplayCamera extends SurfaceView implements SurfaceHolder.Callback
         }
 
 
+    }
+
+    public int getH()
+    {
+        return h;
+    }
+    public int getW()
+    {
+        return w;
     }
 }
 
