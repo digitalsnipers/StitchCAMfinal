@@ -1,6 +1,7 @@
 package com.digitalsnipers.shameel.sample;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -44,6 +45,7 @@ public class MainCamActivity extends AppCompatActivity {
     ImageButton shutterBtn;
     ImageButton okBtn;
     ImageButton cancelBtn;
+    ImageButton cropBtn;
     RelativeLayout imagePreview;
     ImageView imageStatus;
     int i=0,count=4,k=10;
@@ -203,8 +205,18 @@ public class MainCamActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     imagePreview.setVisibility(View.GONE);
+
+                    i++;
+                    if(count==9)
+                    {
+                        loadGui9();
+                    }
+                    else
+                    {
+                            loadGui4();
+                    }
                     //croping for primary image
-                    if(i==0)
+                    if(i==1)
                     {
                         mBgHandler.post(new Runnable() {
                             @Override
@@ -213,10 +225,27 @@ public class MainCamActivity extends AppCompatActivity {
                             }
                         });
                         //cropImg();
+                        cropBtn.setVisibility(View.GONE);
                     }
-                    i++;
-                    if(count==8){loadGui8();}
-                    loadGui4();
+                }
+
+            });
+
+            //cropvaluebttn
+            cropBtn = (ImageButton) findViewById(R.id.cropBtn);
+            cropBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(count==4)
+                    {
+                        count=9;
+                        cropBtn.setImageResource(R.mipmap.ic_9x);
+                    }
+                    else
+                    {
+                        count=4;
+                        cropBtn.setImageResource(R.mipmap.ic_4x);
+                    }
                 }
 
             });
@@ -249,10 +278,15 @@ public class MainCamActivity extends AppCompatActivity {
                 break;}
             case 4:{imageStatus.setImageResource(R.mipmap.ic_sts44);
                 break;}
+            case 5:{
+                Intent intent= new Intent("com.digitalsnipers.shameel.sample.SrvrActivity");
+                startActivity(intent);
+            }
+
             default:break;
         }
     }
-    private void loadGui8(){
+    private void loadGui9(){
 
         //image status icon
         switch(i){
@@ -276,6 +310,10 @@ public class MainCamActivity extends AppCompatActivity {
                 break;}
             case 9:{imageStatus.setImageResource(R.mipmap.ic_sts99);
                 break;}
+            case 10:{
+                Intent intent= new Intent("com.digitalsnipers.shameel.sample.SrvrActivity");
+                startActivity(intent);
+            }
             default:break;
         }
     }

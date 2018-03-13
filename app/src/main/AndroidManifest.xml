@@ -22,7 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SrvrActivity"></activity>
+
+        <activity
+            android:name=".SrvrActivity">
+            <intent-filter>
+                <action android:name="com.digitalsnipers.shameel.sample.SrvrActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
