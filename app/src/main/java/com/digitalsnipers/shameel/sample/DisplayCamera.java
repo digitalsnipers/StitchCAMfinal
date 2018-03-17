@@ -32,13 +32,6 @@ public class DisplayCamera extends SurfaceView implements SurfaceHolder.Callback
     }
 
     @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-        camera.stopPreview();
-        camera.release();
-
-    }
-
-    @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Camera.Parameters params = camera.getParameters();
 
@@ -85,6 +78,13 @@ public class DisplayCamera extends SurfaceView implements SurfaceHolder.Callback
             e.printStackTrace();
         }
 
+
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        camera.stopPreview();
+        camera.release();
 
     }
 

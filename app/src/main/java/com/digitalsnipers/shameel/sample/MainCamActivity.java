@@ -35,6 +35,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.concurrent.Executors;
 
+import static android.R.attr.countDown;
 import static android.R.attr.data;
 
 public class MainCamActivity extends AppCompatActivity {
@@ -279,7 +280,10 @@ public class MainCamActivity extends AppCompatActivity {
             case 4:{imageStatus.setImageResource(R.mipmap.ic_sts44);
                 break;}
             case 5:{
+                String scount=Integer.toString(4);
                 Intent intent= new Intent("com.digitalsnipers.shameel.sample.SrvrActivity");
+                intent.putExtra("COUNT", scount);
+                //intent.putExtra("OPFOLDER", scount);
                 startActivity(intent);
             }
 
@@ -311,7 +315,10 @@ public class MainCamActivity extends AppCompatActivity {
             case 9:{imageStatus.setImageResource(R.mipmap.ic_sts99);
                 break;}
             case 10:{
+                String scount=Integer.toString(9);
                 Intent intent= new Intent("com.digitalsnipers.shameel.sample.SrvrActivity");
+                intent.putExtra("COUNT", scount);
+               // intent.putExtra("OPFOLDER", scount);
                 startActivity(intent);
             }
             default:break;
