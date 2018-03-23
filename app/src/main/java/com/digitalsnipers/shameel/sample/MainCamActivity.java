@@ -21,6 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.Toast;
 import com.facebook.drawee.view.DraweeView;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -49,10 +50,10 @@ public class MainCamActivity extends AppCompatActivity {
     ImageButton cropBtn;
     RelativeLayout imagePreview;
     ImageView imageStatus;
+    SeekBar seekBar;
     int i=0,count=4,k=10;
     String no;
-    //initialising Fresco
-    //Fresco.initialize(this);
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus){
@@ -76,7 +77,7 @@ public class MainCamActivity extends AppCompatActivity {
 
         startBgThread();
 
-        //creating output folder if does not exist
+
         createOutputFolder();
 
         frameLayout = (FrameLayout)findViewById(R.id.frameLayout);
