@@ -85,6 +85,7 @@ public class MainCamActivity extends AppCompatActivity {
         imagePreview.setVisibility(View.GONE);
         imageStatus= (ImageView)findViewById(R.id.imageStatus);
         imageStatus.setVisibility(View.GONE );
+        seekBar = (SeekBar)findViewById(R.id.seekBar2) ;
 
 
         //open the camera
@@ -273,6 +274,7 @@ public class MainCamActivity extends AppCompatActivity {
 
             case 1:{imageStatus.setVisibility(View.VISIBLE);
                 imageStatus.setImageResource(R.mipmap.ic_sts14);
+                seekBar.setVisibility(View.VISIBLE);
                 break;}
             case 2:{imageStatus.setImageResource(R.mipmap.ic_sts24);
                 break;}
@@ -298,6 +300,7 @@ public class MainCamActivity extends AppCompatActivity {
 
             case 1:{imageStatus.setVisibility(View.VISIBLE);
                 imageStatus.setImageResource(R.mipmap.ic_sts19);
+                seekBar.setVisibility(View.VISIBLE);
                 break;}
             case 2:{imageStatus.setImageResource(R.mipmap.ic_sts29);
                 break;}

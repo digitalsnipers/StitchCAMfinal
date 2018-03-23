@@ -103,6 +103,18 @@
             android:layout_toEndOf="@+id/frameLayout"
             fresco:srcCompat="@mipmap/ic_sts14" />
 
+        <SeekBar
+            android:id="@+id/seekBar2"
+            android:rotation="270"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:theme="@style/MySeekBarTheme"
+            android:max="100"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/imageStatus"
+            android:visibility="gone"
+            />
+
     </RelativeLayout>
 
 </RelativeLayout>
